@@ -9,6 +9,11 @@ interface ChooseSong {
 	public void tell();
 }
 
+@FunctionalInterface
+interface yourName{
+	public String say(String yourname);
+}
+
 public class LambdaFunctional {
 	public static void main(String[] args) {
 		/*
@@ -29,5 +34,9 @@ public class LambdaFunctional {
 		}
 	};
 	 choose.tell();
+	 //Biểu thức lambda một tham số
+	 
+	 
+	 
 	}
 }
