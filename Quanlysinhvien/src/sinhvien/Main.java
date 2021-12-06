@@ -1,7 +1,7 @@
 package sinhvien;
 
 import java.util.Scanner;
-
+//Danh sách thông tin sinh viên và điểm trung bình
 public class Main {
 	
 	public static Scanner scanner = new Scanner(System.in);
