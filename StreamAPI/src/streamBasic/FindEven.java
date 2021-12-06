@@ -10,6 +10,7 @@ public class FindEven {
 	public static void main(String[] args) {
 		List<Integer> numberarr = Arrays.asList(3,5,4,19,2,34,11);
 		showList(numberarr);
+		//showListByStream(numberarr);
 		System.out.println();
 		useStream(numberarr);
 		System.out.println();
@@ -57,6 +58,11 @@ public class FindEven {
 		for (Integer number : arrs) {
 			System.out.print(number + " ");
 		}
+		
+	}
+	
+	public static void showListByStream(List<Integer> arrs) {
+		arrs.stream().forEach(System.out::print);
 	}
 
 }
