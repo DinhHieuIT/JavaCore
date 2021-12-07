@@ -8,6 +8,7 @@ public class Main {
 		String s2= new String("Xinchao");
 		System.out.println("s1==s2 is " +(s1==s2));
 		System.out.println("s1.equals(s2)) is " + s1.equals(s2));
+		
 		//Với lớp chúng ta chưa override phương thức equals.
 		EmployeeSalary NamSalary = new EmployeeSalary(1,"Nam",123456);
 		EmployeeSalary TrangSalary = new EmployeeSalary(1,"Nam",123456);
