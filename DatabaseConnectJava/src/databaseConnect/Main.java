@@ -25,12 +25,14 @@ public class Main {
 	private static List<VaccinedPeople> vaccinedPeoples = new ArrayList<VaccinedPeople>();
 	
 	public static void main(String[] args) {
-		
+		Connection connection = null;
+		Statement statement = null;
 		//1,Load driver depend on database type. For example Mysql
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			Connection connect = DriverManager.getConnection(connectURL, username, password);
-			Statement statement = connect.createStatement();
+			connection = DriverManager.getConnection(connectURL, username, password);
+			connection.setAutoCommit(false);
+			statement = connection.createStatement();
 			String insert = "INSERT INTO vaccinedpeople(name, phone, address) VALUE('Hieu','12345','Ha Tinh')";
 			String load = "SELECT * FROM vaccinedpeople";
 			int rowsAffected = statement.executeUpdate(insert);
@@ -51,24 +53,39 @@ public class Main {
 				System.out.println("Insert successful");
 			}
 			statement.close();
-			connect.close();
+			connection.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		//Sử dụng hibernate
+		try {
+			if(connection!=null) {
+				connection.rollback();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+			if(statement != null) {
+					statement.close();
+				}} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			try {
+			if(connection != null) {
+					connection.close();
+				}} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		//Hibernate là một trong những ORM phổ biến
 		VaccinedPeopleService vaccinedPeopleService = new VaccinedPeopleService();
 		Integer id1 = vaccinedPeopleService.addPeople("Hoan","1285","Ha Tinh");
 		vaccinedPeopleService.showList(vaccinedPeoples);
-		
-	
-	
-	
-	
-	
-	
-	
-	
+		}
 	}
-}
+

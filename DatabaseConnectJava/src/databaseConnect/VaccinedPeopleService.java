@@ -8,6 +8,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+//ORM (Object Relational Mapping : Kỹ thuật thực hiện ánh xạ cơ sở dữ liệu cơ sở dữ liệu 
+//sang các đối tượng trong các ngôn ngữ lập trình .
+//Hibernate là một trong những ORM phổ biến
 public class VaccinedPeopleService {
 	//SessionFactory là interface giúp tạo ra kết nối đến database bằng cách đọc Hibernate Config.
 	private static SessionFactory factory =new Configuration().configure().buildSessionFactory();
